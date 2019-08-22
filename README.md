@@ -2,6 +2,7 @@
 
 ### example-team.yaml
 
+```
 name: example-team-name
 registries:
 - registry: index.docker.io
@@ -11,10 +12,11 @@ repositories:
 - domain: github.com
   username: papicella
   password: ....
-
+```
 
 ### example-image.yaml
 
+```
 team: example-team-name
 source:
   git:
@@ -22,6 +24,7 @@ source:
     revision: master
 image:
   tag: pasapples/pbs-demo-image
+```
 
 ### Create Config 
 
