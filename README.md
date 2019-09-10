@@ -1,48 +1,51 @@
 # Pivotal Build Service Spring Boot Demo
 
-### example-team.yaml
+### Create a team
 
-```
-name: example-team-name
-registries:
-- registry: index.docker.io
-  username: pasapples
-  password: .....
-repositories:
-- domain: github.com
-  username: papicella
-  password: ....
+``` bash
+$ pb team create example-team-name
 ```
 
-### example-image.yaml
+### Add secrets to team , first my adding a registry
 
-```
+**registry.yaml**
+
+``` yaml
 team: example-team-name
-source:
-  git:
-    url: https://github.com/papicella/pbs-demo
-    revision: master
-image:
-  tag: pasapples/pbs-demo-image
+registry: index.docker.io
+username: pasapples
+password: .....
 ```
 
-### Create Config 
-
+``` bash
+$ pb secrets registry apply -f registry.yaml
 ```
-pb team apply -f example-team.yaml
-pb image apply -f example-image.yaml
+
+### Add secrets to team , this time adding adding a GIT based repository 
+
+**repository.yaml**
+
+``` yaml
+team: example-team-name
+repository: github.com
+username: papicella
+password: .....
+```
+
+``` bash
+$ pb secrets git apply -f repository.yaml
 ```
 
 ### View Builds / Logs
 
-```
+``` bash
 pb image builds pasapples/pbs-demo-image
 pb image logs pasapples/pbs-demo-image -b 1 -f
 ```
 
 ### Pull down image locally and run
 
-```
+``` bash
 docker pull pasapples/pbs-demo-image
 docker run -p 8080:8080 pasapples/pbs-demo-image
 ```
@@ -67,7 +70,7 @@ spec:
           ports:
             - containerPort: 8080
 
----
+--- 
 apiVersion: v1
 kind: Service
 metadata:
@@ -84,7 +87,7 @@ spec:
   type: LoadBalancer
 ```
 
-```
+``` bash
 $ kubectl create -f pbs-image-k8s-yaml.yaml
 ```
 
@@ -108,7 +111,6 @@ Transfer-Encoding: chunked
     "status": "active"
 }
 ```
-
 
 <hr />
 
