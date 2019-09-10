@@ -39,15 +39,15 @@ $ pb secrets git apply -f repository.yaml
 ### View Builds / Logs
 
 ``` bash
-pb image builds pasapples/pbs-demo-image
-pb image logs pasapples/pbs-demo-image -b 1 -f
+$ pb image builds pasapples/pbs-demo-image
+$ pb image logs pasapples/pbs-demo-image -b 1 -f
 ```
 
 ### Pull down image locally and run
 
 ``` bash
-docker pull pasapples/pbs-demo-image
-docker run -p 8080:8080 pasapples/pbs-demo-image
+$ docker pull pasapples/pbs-demo-image
+$ docker run -p 8080:8080 pasapples/pbs-demo-image
 ```
 
 ### Run in a Kubernetes Cluster
