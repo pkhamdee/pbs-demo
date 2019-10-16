@@ -36,6 +36,28 @@ password: .....
 $ pb secrets git apply -f repository.yaml
 ```
 
+### Add secrets to team , this time adding adding a GIT based repository 
+
+**example-image.yaml**
+
+``` yaml
+team: example-team-name
+source:
+  git:
+    url: https://github.com/papicella/pbs-demo
+    revision: master
+build:
+  env:
+  - name: BP_JAVA_VERSION
+    value: 11.*
+image:
+  tag: pasapples/pbs-demo-image
+```
+
+``` bash
+$ pb image apply -f example-image.yaml
+```
+
 ### View Builds / Logs
 
 ``` bash
