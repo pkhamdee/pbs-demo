@@ -32,7 +32,7 @@ public class SwaggerConfig {
                 "My Customers REST API",
                 "1.0",
                 "Terms of service",
-                new Contact("Pas Apicella", "http://theblasfrompas.blogspot.com/", "papicella@pivotal.io"),
+                new Contact("Pongsak", "http://theblasfrompas.blogspot.com/", "papicella@pivotal.io"),
                 "License of API", "API license URL", Collections.emptyList());
     }
 }
